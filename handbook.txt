@@ -1,0 +1,4 @@
+use state across component:
+https://stackoverflow.com/questions/72963343/use-same-usestate-in-different-components
+template hot plate :
+https://coreui.io/react/docs/customize/options/
