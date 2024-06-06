@@ -1,15 +1,15 @@
-import {Sidebar} from "./Sidebar";
 import {useState} from "react";
 import {ComponentContext} from "../context/Context";
 import {SetupCrawler} from "./setupCrawler/SetupCrawler";
 import {Settings} from "./settings/Settings";
-import {Dashboard} from "./dashboard/Dashboard";
+import {Monitoring} from "./dashboard/Monitoring";
+import {Sidebar} from "./sidebar/Sidebar";
 
 function DynamicComponentBoxed({box}) {
-    if(box.component ==="dashboard") {
+    if(box.component ==="monitoring") {
         return (
             <>
-                {<Dashboard/>}
+                {<Monitoring/>}
             </>
         )
     }
@@ -30,7 +30,7 @@ function DynamicComponentBoxed({box}) {
 }
 
 export function MainDashboard() {
-    const [componentState, setComponentState] = useState("dashboard")
+    const [componentState, setComponentState] = useState("monitoring")
     return(
         <ComponentContext.Provider value={{ componentState,setComponentState}}>
             <>

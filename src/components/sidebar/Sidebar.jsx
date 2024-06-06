@@ -1,22 +1,15 @@
 import {useContext} from "react";
-import {ComponentContext} from "../context/Context";
-
-export function GetDashboard(name) {
-    return {
-        component:name
-    }
-}
-
+import {ComponentContext} from "../../context/Context";
 
 export function Sidebar() {
     const { setComponentState } = useContext(ComponentContext)
     return(
         <ul>
-            <li onClick={event => {
-                ChangeComponent(setComponentState('dashboard'))
-            }}>Dashboard
+            <li>Dashboard
                 <ul>
-                    <li>Monitoring</li>
+                    <li onClick={event => {
+                        ChangeComponent(setComponentState('monitoring'))
+                    }}>Monitoring</li>
                 </ul>
             </li>
             <li onClick={event => {
@@ -27,18 +20,16 @@ export function Sidebar() {
                     <li>Crawler Management</li>
                 </ul>
             </li>
-            <li onClick={event => {
-                ChangeComponent(setComponentState('setupCrawler'))
-            }}>Setup Project
+            <li>Setup Project
                 <ul>
                     <li>Category</li>
                     <li>Model</li>
-                    <li>Crawler</li>
+                    <li onClick={event => {
+                        ChangeComponent(setComponentState('setupCrawler'))
+                    }}>Crawler</li>
                 </ul>
             </li>
-            <li onClick={event => {
-                ChangeComponent(setComponentState('setupCrawler'))
-            }}>Tools Project
+            <li>Tools Project
                 <ul>
                     <li>Export Data</li>
                     <li>Import Data</li>
@@ -48,5 +39,4 @@ export function Sidebar() {
     )
 }
 
-const ChangeComponent = (name) => {
-}
+const ChangeComponent = (name) => {}
