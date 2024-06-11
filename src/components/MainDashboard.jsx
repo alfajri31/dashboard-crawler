@@ -1,9 +1,12 @@
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {ComponentContext} from "../context/Context";
-import {SetupCrawler} from "./setupCrawler/SetupCrawler";
+import {Crawler} from "./setupCrawler/Crawler";
 import {Settings} from "./settings/Settings";
 import {Monitoring} from "./dashboard/Monitoring";
 import {Sidebar} from "./sidebar/Sidebar";
+import {Model} from "./setupCrawler/Model";
+
+
 
 function DynamicComponentBoxed({box}) {
     if(box.component ==="monitoring") {
@@ -23,7 +26,14 @@ function DynamicComponentBoxed({box}) {
     if(box.component ==="setupCrawler") {
         return (
             <>
-                {<SetupCrawler/>}
+                {<Crawler/>}
+            </>
+        )
+    }
+    if(box.component ==="model") {
+        return (
+            <>
+                {<Model/>}
             </>
         )
     }
@@ -31,6 +41,16 @@ function DynamicComponentBoxed({box}) {
 
 export function MainDashboard() {
     const [componentState, setComponentState] = useState("monitoring")
+    useEffect((event) => {
+        window.onbeforeunload = function() {
+            //logic when page is not refreshed/reloaded
+            return true;
+        };
+        return () => {
+            window.onbeforeunload = null;
+            //logic when page is refreshed/reloaded
+        };
+    }, []);
     return(
         <ComponentContext.Provider value={{ componentState,setComponentState}}>
             <>

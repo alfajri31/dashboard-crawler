@@ -20,10 +20,12 @@ export function Sidebar() {
                     <li>Crawler Management</li>
                 </ul>
             </li>
-            <li>Setup Project
+            <li>Setup Crawler
                 <ul>
                     <li>Category</li>
-                    <li>Model</li>
+                    <li onClick={event => {
+                        ChangeComponent(setComponentState('model'))
+                    }}>Model</li>
                     <li onClick={event => {
                         ChangeComponent(setComponentState('setupCrawler'))
                     }}>Crawler</li>
